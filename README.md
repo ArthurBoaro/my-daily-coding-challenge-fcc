@@ -8,7 +8,7 @@ The goal of this project is to practice problem-solving, improve logical thinkin
 
 ---
 
-## Languages Used
+## Programming Languages
 
 * Python
 * JavaScript
