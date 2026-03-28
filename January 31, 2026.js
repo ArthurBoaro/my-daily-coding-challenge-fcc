@@ -1,0 +1,47 @@
+function getSign(dateString) {
+  const zodiacTable = [
+    { start: [3, 21], end: [4, 19], sign: "Aries" },
+    { start: [4, 20], end: [5, 20], sign: "Taurus" },
+    { start: [5, 21], end: [6, 20], sign: "Gemini" },
+    { start: [6, 21], end: [7, 22], sign: "Cancer" },
+    { start: [7, 23], end: [8, 22], sign: "Leo" },
+    { start: [8, 23], end: [9, 22], sign: "Virgo" },
+    { start: [9, 23], end: [10, 22], sign: "Libra" },
+    { start: [10, 23], end: [11, 21], sign: "Scorpio" },
+    { start: [11, 22], end: [12, 21], sign: "Sagittarius" },
+    { start: [12, 22], end: [1, 19], sign: "Capricorn" },
+    { start: [1, 20], end: [2, 18], sign: "Aquarius" },
+    { start: [2, 19], end: [3, 20], sign: "Pisces" }
+  ];
+
+  const dateObject = new Date(dateString);
+  const month = dateObject.getMonth() + 1;
+  const day = dateObject.getDate();
+
+  for (let zodiac of zodiacTable) {
+    const [startMonth, startDay] = zodiac.start;
+    const [endMonth, endDay] = zodiac.end;
+    const signName = zodiac.sign;
+
+
+    if (startMonth <= endMonth) {
+      if (
+        (month === startMonth && day >= startDay) ||
+        (month === endMonth && day <= endDay) ||
+        (month > startMonth && month < endMonth)
+      ) {
+        return signName;
+      }
+    } 
+
+    else {
+      if (
+        (month === startMonth && day >= startDay) ||
+        (month === endMonth && day <= endDay) ||
+        (month > startMonth || month < endMonth)
+      ) {
+        return signName;
+      }
+    }
+  }
+}
